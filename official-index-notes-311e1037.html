@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全球盛典：世界杯的故事</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f5faf9;
+      color: #143c3c;
+      line-height: 1.7;
+    }
+    a {
+      color: #0b7e73;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+    a:hover { border-bottom-color: #0b7e73; }
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    /* Hero 横幅 */
+    .hero {
+      position: relative;
+      background: linear-gradient(115deg, #154545 0%, #1f6b63 60%, #3c8f84 100%);
+      color: #e7f3f0;
+      padding: 5rem 1.5rem 4rem;
+      border-radius: 0 0 4rem 4rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 10px 25px rgba(20, 60, 60, 0.15);
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -15%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      max-width: 700px;
+    }
+    .hero .sub {
+      font-size: 1.2rem;
+      opacity: 0.85;
+      margin-top: 0.5rem;
+      max-width: 600px;
+      font-weight: 300;
+    }
+    .hero .accent-line {
+      display: inline-block;
+      width: 60px;
+      height: 4px;
+      background: #b5e3db;
+      border-radius: 3px;
+      margin: 1.2rem 0 0.5rem;
+    }
+    /* 网格卡片区 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.8rem;
+      margin: 3rem 0;
+    }
+    .card {
+      background: white;
+      border-radius: 1.8rem;
+      padding: 2rem 1.6rem 1.8rem;
+      box-shadow: 0 4px 12px rgba(20, 60, 60, 0.06);
+      transition: transform 0.15s ease, box-shadow 0.2s;
+      border: 1px solid #d8edea;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(20, 60, 60, 0.1);
+    }
+    .card .icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .card h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #1b5e55;
+      margin-bottom: 0.4rem;
+    }
+    .card p {
+      font-size: 0.98rem;
+      color: #29655c;
+    }
+    .card p + p { margin-top: 0.5rem; }
+    /* 两栏介绍区域 */
+    .feature-block {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      background: #ebf7f4;
+      border-radius: 2.2rem;
+      padding: 2.5rem 2.5rem;
+      margin: 2.5rem 0;
+      align-items: flex-start;
+    }
+    .feature-block .left {
+      flex: 1.2;
+      min-width: 260px;
+    }
+    .feature-block .right {
+      flex: 1.8;
+      min-width: 260px;
+    }
+    .feature-block h2 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: #124a41;
+      letter-spacing: -0.01em;
+    }
+    .feature-block p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    .faq-mini {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.5rem 1.8rem;
+      margin: 2.8rem 0 3rem;
+      border-left: 6px solid #2f877a;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+    .faq-mini dt {
+      font-weight: 600;
+      color: #1b6052;
+      margin-top: 0.5rem;
+      font-size: 1.05rem;
+    }
+    .faq-mini dd {
+      margin: 0.2rem 0 0.8rem 0;
+      color: #2a5c51;
+    }
+    .cta-note {
+      text-align: center;
+      padding: 2.5rem 1.5rem 3rem;
+      background: #ddf2ed;
+      border-radius: 3rem 3rem 1.5rem 1.5rem;
+      margin: 3rem 0 4rem;
+    }
+    .cta-note p {
+      font-size: 1.15rem;
+      max-width: 550px;
+      margin: 0 auto;
+      color: #14443d;
+    }
+    .cta-note a {
+      font-weight: 600;
+      border-bottom-width: 2px;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #46766e;
+      border-top: 1px solid #c6dfd9;
+      padding: 2rem 0 2.5rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 640px) {
+      .hero { padding: 3.5rem 1.2rem 2.8rem; border-radius: 0 0 2.5rem 2.5rem; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero .sub { font-size: 1rem; }
+      .grid-cards { grid-template-columns: 1fr; gap: 1.2rem; }
+      .feature-block { padding: 1.8rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Hero 区 -->
+    <header class="hero">
+      <h1>同一个名字，无数种热爱</h1>
+      <div class="accent-line"></div>
+      <p class="sub">从街头到殿堂，足球的脉搏从未停歇。<br>四年一度，全世界的目光汇聚于一片绿茵。</p>
+    </header>
+
+    <!-- 背景说明 + 卡片网格 -->
+    <section>
+      <p style="font-size: 1.05rem; max-width: 680px;">很少有赛事像<a href="https://official-index-fifa.com">世界杯</a>这样，超越民族、语言与地域，成为全球数十亿人共同的情感容器。它不只是奖杯与纪录，更是一代代人的盛夏记忆、偶然的眼泪与不眠的欢呼。</p>
+
+      <div class="grid-cards">
+        <div class="card">
+          <div class="icon">🌍</div>
+          <h3>跨越大陆的共鸣</h3>
+          <p>32 支球队，六大洲的足迹。从预选赛到决赛，每一条晋级路线都写满悬念。没有哪项运动能像它一样，让整个世界在同一时间屏住呼吸。</p>
+        </div>
+        <div class="card">
+          <div class="icon">🏟️</div>
+          <h3>球场内外皆故事</h3>
+          <p>城市披上旗帜的颜色，陌生人因一粒进球相拥。街头巷尾的讨论、家庭客厅的呐喊，构成了比赛之外同样动人的章节。</p>
+        </div>
+        <div class="card">
+          <div class="icon">⚽</div>
+          <h3>风格即语言</h3>
+          <p>桑巴、探戈、团队、铁血……每一支球队都在用自己的方式诠释足球。世界杯像一个流动的博物馆，展出战术、天赋与意志力。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 三段自然介绍（feature block + 内嵌句子） -->
+    <div class="feature-block">
+      <div class="left">
+        <h2>不只是竞技</h2>
+        <p style="margin-top: 0.5rem; color: #1c5b4e;">一场比赛，背后是数年的准备、青训体系、成千上万人的协作。当球员站上赛场，他们带着的不仅是个人的梦想，还有一片土地的期待。</p>
+      </div>
+      <div class="right">
+        <p>1986 年马拉多纳的连过五人，2002 年韩国红魔的声浪，2014 年格策的绝杀——这些瞬间之所以经典，是因为它们浓缩了足球的偶然与必然。而每一届<a href="https://official-index-fifa.com">世界杯</a>都在刷新这样令人动容的剧本，让后来者找到自己的英雄故事。</p>
+        <p>我们也看到，赛事早已渗透进大众文化：主题曲传唱于街头巷尾，吉祥物变成一代人的童年符号，甚至那些爆冷的夜晚，也成了办公室第二天的共同话题。这种联结是其他任何平台都难以复制的。</p>
+      </div>
+    </div>
+
+    <!-- FAQ 摘要风格 -->
+    <dl class="faq-mini">
+      <dt>为什么世界杯拥有如此高的关注度？</dt>
+      <dd>因为它的叙事是天然的：强弱对抗、黑马崛起、新老交替，每一届都提供独一无二的戏剧张力。同时，四年一次的等待也增加了期待的分量。</dd>
+      <dt>它如何影响普通人的生活？</dt>
+      <dd>不仅是看球。世界杯期间，人们调整作息、组织观赛派对、购买周边，甚至学习不同国家的加油口号。它成了一种社交货币和共同记忆。</dd>
+    </dl>
+
+    <!-- 页尾访问提示 -->
+    <div class="cta-note">
+      <p>如果你也想重温那些载入史册的经典片段，或者了解最新一届的赛程与数据，<br>
+      不妨去 <a href="https://official-index-fifa.com">世界杯</a> 专属页看看。那里有详实的历史档案、球队介绍与实时资讯。</p>
+    </div>
+
+    <footer class="footer">
+      <p>© 2025 · 足球专题 · 以中立视角讲述绿茵故事</p>
+    </footer>
+  </div>
+</body>
+</html>
